@@ -30,7 +30,10 @@ import requests
 from fastapi import FastAPI, Header, HTTPException
 from fastapi.responses import FileResponse, JSONResponse
 from jsonschema import Draft202012Validator
-from playwright.sync_api import sync_playwright
+try:
+    from playwright.sync_api import sync_playwright
+except ImportError:
+    sync_playwright = None
 
 # =============================================================================
 # ENVIRONMENT CONFIGURATION
